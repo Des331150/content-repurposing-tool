@@ -15,6 +15,7 @@ type Config struct {
 
 type WhisperConfig struct {
 	ModelSize string `toml:"model_size"`
+	ModelDir  string `toml:"model_dir"`
 }
 
 type ExportConfig struct {
@@ -34,6 +35,7 @@ func Load(path string) (*Config, error) {
 	cfg := &Config{
 		Whisper: WhisperConfig{
 			ModelSize: "medium",
+			ModelDir:  "models",
 		},
 		Export: ExportConfig{
 			OutputDir:       "./clips",
