@@ -35,7 +35,7 @@ func main() {
 	stageSet := pipeline.PipelineStages{
 		AudioExtraction:    &stages.AudioExtraction{WorkDir: workDir},
 		Transcription:      stages.NewTranscription(cfg.Whisper.ModelSize, cfg.Whisper.ModelDir, ""),
-		NarrativeAnalysis:  &stages.NarrativeAnalysis{},
+		NarrativeAnalysis:  &stages.NarrativeAnalysis{APIKey: cfg.OpenRouter.APIKey, Model: cfg.OpenRouter.Model},
 		SceneDetection:     &stages.SceneDetection{Threshold: cfg.SceneDetection.Threshold},
 		ClipSelection:      &stages.ClipSelection{},
 		PlatformFormatting: &stages.PlatformFormatting{WorkDir: workDir},

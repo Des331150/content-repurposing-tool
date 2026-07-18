@@ -6,6 +6,8 @@ import (
 	"github.com/BurntSushi/toml"
 )
 
+const envOpenRouterKey = "OPENROUTER_API_KEY"
+
 type Config struct {
 	Whisper        WhisperConfig        `toml:"whisper"`
 	Export         ExportConfig         `toml:"export"`
@@ -24,7 +26,8 @@ type ExportConfig struct {
 }
 
 type OpenRouterConfig struct {
-	Model string `toml:"model"`
+	Model  string `toml:"model"`
+	APIKey string `toml:"api_key"`
 }
 
 type SceneDetectionConfig struct {
@@ -57,5 +60,10 @@ func Load(path string) (*Config, error) {
 	if err != nil {
 		return nil, err
 	}
+
+	if cfg.OpenRouter.APIKey == "" {
+		cfg.OpenRouter.APIKey = os.Getenv(envOpenRouterKey)
+	}
+
 	return cfg, nil
 }
