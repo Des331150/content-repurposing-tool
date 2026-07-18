@@ -1,0 +1,3 @@
+# Go + HTMX stack
+
+We chose Go with server-rendered HTML (`html/template`) + HTMX + Alpine.js for the web frontend, rather than a separate frontend framework (React, Svelte) or a Python backend. Go compiles to a single small binary, handles concurrency well for video processing, and the HTMX stack eliminates the need for a Node.js build pipeline. This keeps deployment trivial and avoids adding a second runtime to the project.

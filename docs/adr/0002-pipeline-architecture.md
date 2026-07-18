@@ -1,0 +1,3 @@
+# Pipeline architecture
+
+The processing chain is structured as a linear pipes-and-filters pipeline: Audio Extraction → Transcription → Narrative Analysis → Scene Detection → Clip Selection → Platform Formatting → Export. Each stage has a defined input/output contract, making stages independently replaceable. For example, the Narrative Analysis stage can swap between heuristic, local LLM, or API LLM implementations without touching other stages. This was chosen over a monolithic processing function to make the system testable, extensible, and debuggable stage-by-stage.

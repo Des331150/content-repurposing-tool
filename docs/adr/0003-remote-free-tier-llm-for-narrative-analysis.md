@@ -1,0 +1,3 @@
+# Remote free-tier LLM for narrative analysis
+
+The narrative analysis stage uses a remote free-tier LLM via OpenRouter (e.g., `llama-3.2-3b-instruct:free`) rather than a local LLM or purely heuristic scoring. A local LLM (via ollama/llama.cpp) was rejected because the user's machine cannot reliably run one. Heuristics (TF-IDF, pause proximity) were rejected because they produce measurably worse clip selections. A paid API (OpenAI, Anthropic) was rejected to keep the tool cost-free. The OpenRouter free tier offers sufficient quality for transcript analysis with no local GPU or API costs.
