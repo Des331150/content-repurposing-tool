@@ -7,9 +7,10 @@ import (
 )
 
 type Config struct {
-	Whisper   WhisperConfig   `toml:"whisper"`
-	Export    ExportConfig    `toml:"export"`
-	OpenRouter OpenRouterConfig `toml:"openrouter"`
+	Whisper        WhisperConfig        `toml:"whisper"`
+	Export         ExportConfig         `toml:"export"`
+	OpenRouter     OpenRouterConfig     `toml:"openrouter"`
+	SceneDetection SceneDetectionConfig `toml:"scene_detection"`
 }
 
 type WhisperConfig struct {
@@ -25,6 +26,10 @@ type OpenRouterConfig struct {
 	Model string `toml:"model"`
 }
 
+type SceneDetectionConfig struct {
+	Threshold float64 `toml:"threshold"`
+}
+
 func Load(path string) (*Config, error) {
 	cfg := &Config{
 		Whisper: WhisperConfig{
@@ -36,6 +41,9 @@ func Load(path string) (*Config, error) {
 		},
 		OpenRouter: OpenRouterConfig{
 			Model: "meta-llama/llama-3.2-3b-instruct:free",
+		},
+		SceneDetection: SceneDetectionConfig{
+			Threshold: 0.4,
 		},
 	}
 

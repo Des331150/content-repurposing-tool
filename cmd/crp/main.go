@@ -36,7 +36,7 @@ func main() {
 		AudioExtraction:    &stages.AudioExtraction{WorkDir: workDir},
 		Transcription:      &stages.Transcription{},
 		NarrativeAnalysis:  &stages.NarrativeAnalysis{},
-		SceneDetection:     &stages.SceneDetection{},
+		SceneDetection:     &stages.SceneDetection{Threshold: cfg.SceneDetection.Threshold},
 		ClipSelection:      &stages.ClipSelection{},
 		PlatformFormatting: &stages.PlatformFormatting{WorkDir: workDir},
 		Export:             &stages.Export{OutputDir: cfg.Export.OutputDir},
